@@ -141,7 +141,7 @@ class BookList {
   NextBook(){
     let j = i+1;
     while(j < this._Books.length){
-      if(this._Books[j]._Leído !== false){
+      if(this._Books[j]._read !== false){
         i++;
       }else{
         return this._Books[j];

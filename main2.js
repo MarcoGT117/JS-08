@@ -165,11 +165,11 @@ class BookList {
     //console.log(vari)
     vari._Leído = true;
     vari._FechaLeído = Date.now();
-    document.getElementById("libro1").innerHTML = libro1.dataList();
+  /*   document.getElementById("libro1").innerHTML = libro1.dataList();
     document.getElementById("libro2").innerHTML = libro2.dataList();
     document.getElementById("libro3").innerHTML = libro3.dataList();
     document.getElementById("libro4").innerHTML = libro4.dataList();
-    document.getElementById("libro5").innerHTML = libro5.dataList();
+    document.getElementById("libro5").innerHTML = libro5.dataList(); */
   }
 }
 let booklist = new BookList();
@@ -183,13 +183,26 @@ console.log(booklist._Books);
 
 var act = booklist.Read();
 
-console.log("Cantidad de libros leidos: ",act);
+function printRead(){
+  document.getElementById("leido").innerHTML = ("Cantidad de libros leidos: " + act);
+};
+
+  console.log("Cantidad de libros leidos: ",act);
+
 console.log("Cantidad de libros no leidos: ",booklist.NotRead(act));
+
 console.log("Libro que lees actualmente: ",booklist.CurrentBook()._Título);
+
 console.log("Libro siguiente: ",booklist.NextBook()._Título);
+
 console.log("Ultimo libro de tu Booklist: ",booklist.LastBook().Título);
+
 booklist.finishCurrenBook(booklist.CurrentBook());
+
 console.log(booklist._Books);
+
 console.log("Libro que lees actualmente: ",booklist.CurrentBook()._Título);
+
 console.log("Libro siguiente: ",booklist.NextBook()._Título);
+
 console.log("Ultimo libro de tu Booklist: ",booklist.LastBook().Título);

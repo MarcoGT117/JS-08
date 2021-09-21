@@ -1,56 +1,56 @@
 class Book{
-  constructor(Título, Género, Autor, Leído, FechaLeído){
-    this._Título = Título;
-    this._Género = Género;
-    this._Autor = Autor;
-    this._Leído = Leído;
-    this._FechaLeído = FechaLeído;
+  constructor(title, genre, author, read, readDate){
+    this._title = title;
+    this._genre = genre;
+    this._author = author;
+    this._read = read;
+    this._readDate = readDate;
     }
     
-  get Título(){
-      return this._Título;
+  get title(){
+      return this._title;
   }
 
-  set Título(Título){
-      this._Título = Título;
+  set title(title){
+      this._title = title;
   }
 
-  get Género(){
-      return this._Género;
+  get genre(){
+      return this._genre;
   }
   
-  set Género(Género){
-      this._Género = Género;
+  set genre(genre){
+      this._genre = genre;
   }
 
-  get Autor(){
-      return this._Autor;
+  get author(){
+      return this._author;
   }
   
-  set Autor(Autor){
-      this._Autor = Autor;
+  set author(author){
+      this._author = author;
   }
 
-  get Leído(){
-      return this._Leído;
+  get read(){
+      return this._read;
   }
   
-  set Leído(Leído){
-      this._Leído = Leído;
+  set read(read){
+      this._read = read;
   }
 
-  get FechaLeído(){
-      return this._FechaLeído;
+  get readDate(){
+      return this._readDate;
   }
   
-  set FechaLeído(FechaLeído){
-      this._FechaLeído = FechaLeído;
+  set readDate(readDate){
+      this._readDate = readDate;
   }
 
     dataList(){
-      return 'Título: '+this._Título+'<br>'+'Género: '+this._Género+'<br>'+'Autor: '+this._Autor+'<br>' 
-      +'Leído: '+this._Leído+'<br>'
-      +'Fecha: '+this._FechaLeído;
+      return 'Titulo: '+this._title+'<br>'+'Genero: '+this._genre+'<br>'+'Autor: '+this._author+'<br>' 
+      +'¿Leido?: '+this._read+'<br>'
+      +'Fecha: '+this._readDate;
     }
 };
 
@@ -129,7 +129,7 @@ class BookList {
   Read(){
     var cont = 0;
     for(let i=0; i<this._Books.length; i++){
-      if(this._Books[i]._Leído === true){
+      if(this._Books[i]._read === true){
         cont++;
       }
     }
@@ -150,7 +150,7 @@ class BookList {
     }
   }
   CurrentBook(){
-    while(this._Books[i]._Leído !== false){
+    while(this._Books[i]._read !== false){
       i++;
     }
     return this._Books[i];
@@ -163,13 +163,13 @@ class BookList {
   }
   finishCurrenBook(vari){
     //console.log(vari)
-    vari._Leído = true;
-    vari._FechaLeído = Date.now();
-  /*   document.getElementById("libro1").innerHTML = libro1.dataList();
+    vari._read = true;
+    vari._readDate = Date.now();
+    document.getElementById("libro1").innerHTML = libro1.dataList();
     document.getElementById("libro2").innerHTML = libro2.dataList();
     document.getElementById("libro3").innerHTML = libro3.dataList();
     document.getElementById("libro4").innerHTML = libro4.dataList();
-    document.getElementById("libro5").innerHTML = libro5.dataList(); */
+    document.getElementById("libro5").innerHTML = libro5.dataList(); 
   }
 }
 let booklist = new BookList();
@@ -187,22 +187,37 @@ function printRead(){
   document.getElementById("leido").innerHTML = ("Cantidad de libros leidos: " + act);
 };
 
-  console.log("Cantidad de libros leidos: ",act);
+function printNotRead() {
+  document.getElementById("no-leido").innerHTML = "Cantidad de libros no leidos: " + booklist.NotRead(act);
+};
+
+function printCurrentBook(){
+  document.getElementById("leyendo").innerHTML = "Libro que lees actualmente: " + booklist.CurrentBook()._title;
+};
+
+function printNextBook(){
+  document.getElementById("siguiente-libro").innerHTML = "Siguiente libro que leeras: " + booklist.NextBook()._title;
+}
+
+function printLastBook(){
+  document.getElementById("ultimo-libro").innerHTML = "El ultimo libro de tu lista es: " + booklist.LastBook().title;
+}
+console.log("Cantidad de libros leidos: ",act);
 
 console.log("Cantidad de libros no leidos: ",booklist.NotRead(act));
 
-console.log("Libro que lees actualmente: ",booklist.CurrentBook()._Título);
+console.log("Libro que lees actualmente: ",booklist.CurrentBook()._title);
 
-console.log("Libro siguiente: ",booklist.NextBook()._Título);
+console.log("Libro siguiente: ",booklist.NextBook()._title);
 
-console.log("Ultimo libro de tu Booklist: ",booklist.LastBook().Título);
+console.log("Ultimo libro de tu Booklist: ",booklist.LastBook().title);
 
 booklist.finishCurrenBook(booklist.CurrentBook());
 
 console.log(booklist._Books);
 
-console.log("Libro que lees actualmente: ",booklist.CurrentBook()._Título);
+console.log("Libro que lees actualmente: ",booklist.CurrentBook()._title);
 
-console.log("Libro siguiente: ",booklist.NextBook()._Título);
+console.log("Libro siguiente: ",booklist.NextBook()._title);
 
-console.log("Ultimo libro de tu Booklist: ",booklist.LastBook().Título);
+console.log("Ultimo libro de tu Booklist: ",booklist.LastBook().title);
